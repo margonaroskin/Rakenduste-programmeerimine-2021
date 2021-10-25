@@ -2,6 +2,7 @@ import ItemList from '../components/ItemList';
 import CategoryList from '../components/CategoryList';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import '../mainstyle.css'
 
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +20,7 @@ function Home() {
   },[])
 
   useEffect(()=>{
-    fetch('http://localhost:8080/items').then(res => {
+    fetch('http://localhost:8080/categories').then(res => {
       return res.json();
     }).then(data =>{
       console.log(data);
@@ -34,15 +35,19 @@ function Home() {
 
   return (
     <div>
+
+      <h2>Lisatud esemed</h2>
+      <ItemList items={loadedItems} />
       <Link to="add-item">
         <button>Lisa uus ese</button>
       </Link>
-      <ItemList items={loadedItems} />
       <br />
+
+      <h2>Lisatud kategooriad</h2>
+      <CategoryList categories={loadedCategories} />
       <Link to="add-category">
         <button>Lisa uus kategooria</button>
       </Link>
-      <CategoryList categories={loadedCategories} />
     </div>
   )
 }

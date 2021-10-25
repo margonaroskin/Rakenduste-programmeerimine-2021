@@ -1,11 +1,15 @@
 .navbar {
-    background-color: crimson;
+    background-color: rgb(190, 25, 25);
     height: 120px;
     display: flex;
     justify-content: space-between;
 }
 
+.logo {
+    height: 100px;
+}
+
 .cart {
-    height: 50px;
-    margin: 50px;
+    height: 60px;
+    margin: 30px;
 }
