@@ -20,8 +20,23 @@ public class ItemController {
     }
 
     @PostMapping("items")
-    public String postItem(@RequestBody Item item) {
+    public void postItem(@RequestBody Item item) {
         itemService.saveItem(item);
-        return "Ese edukalt lisatud " + item.getName();
+    }
+
+    @DeleteMapping("delete-item/{id}")
+    public List<Item> deleteItem(@PathVariable Long id) {
+        itemService.deleteItem(id);
+        return itemService.getItems();
+    }
+
+    @PostMapping("edit-item")
+    public void editItem(@RequestBody Item item) {
+        itemService.editItem(item);
+    }
+
+    @PostMapping("view-item/{id}")
+    public Item getOneItem(@RequestBody Long id) throws Exception {
+        return itemService.getOneItem(id);
     }
 }
